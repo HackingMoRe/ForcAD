@@ -5,7 +5,6 @@ __pycache__
 
 docker_volumes
 
-*config.yml
 config_backup*.yml
 
 *.env
