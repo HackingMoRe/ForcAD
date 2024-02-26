@@ -8,9 +8,6 @@ docker_volumes
 *config.yml
 config_backup*.yml
 
-checkers/*
-!checkers/requirements.txt
-
 *.env
 /docker-compose-base.yml
 
@@ -31,3 +28,15 @@ deploy/kustomization.yml
 terraform.tfstate*
 /deploy/terraform/credentials.auto.tfvars
 /deploy/terraform/credentials.auto.tfvars.json
+
+.Python
+[Bb]in
+[Ii]nclude
+[Ll]ib
+[Ll]ib64
+[Ll]ocal
+[Ss]cripts
+pyvenv.cfg
+.venv
+pip-selfcheck.json
+
