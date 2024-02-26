@@ -1,0 +1,35 @@
+game:
+  mode: classic
+  round_time: 20
+  start_time: 2019-11-30 15:30:00
+  timezone: Europe/Rome
+
+  default_score: 2500
+  flag_lifetime: 5
+  game_hardness: 10.0
+  inflation: true
+
+tasks:
+  - checker: gadget_horse/checker_1.py
+    checker_timeout: 10
+    checker_type: pfr
+    gets: 2
+    name: gadget_horse_1
+    places: 5
+    puts: 2
+
+  - checker: gadget_horse/gevent_checker_2.py
+    checker_timeout: 10
+    checker_type: pfr
+    gets: 2
+    name: gadget_horse_2
+    places: 5
+    puts: 2
+
+teams:
+  - ip: 192.168.56.106
+    name: "Team 1"
+
+  - ip: 192.168.56.107
+    name: "Team 2 (highlighted)"
+    highlighted: true
