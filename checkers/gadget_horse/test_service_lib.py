@@ -2,6 +2,7 @@ import requests
 import json
 from checklib import *
 import re
+import base64
 
 PORT = 3000
 
@@ -45,8 +46,10 @@ class CheckMachine:
             }
         )
 
+        pub_info = json.loads(base64.urlsafe_b64decode(r.cookies["cart"] + "==").decode())[0]["id"]
+
         self.checker.check_response(r, 'Could not put flag')
-        return email, json.dumps({"email": email, "password": password})
+        return pub_info, json.dumps({"email": email, "password": password})
     
     def put_flag_2(self, flag, vuln):
         session = get_initialized_session()

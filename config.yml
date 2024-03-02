@@ -10,7 +10,7 @@ game:
   inflation: true
 
 tasks:
-  - checker: gadget_horse/checker_1.py
+  - checker: gadget_horse/checkers_1.py
     checker_timeout: 10
     checker_type: pfr
     gets: 2
@@ -18,7 +18,7 @@ tasks:
     places: 5
     puts: 2
 
-  - checker: gadget_horse/gevent_checker_2.py
+  - checker: gadget_horse/checkers_2.py
     checker_timeout: 10
     checker_type: pfr
     gets: 2
