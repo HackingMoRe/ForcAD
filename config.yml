@@ -1,3 +1,7 @@
+admin:
+  password: admin
+  username: admin
+
 game:
   mode: classic
   round_time: 20
