@@ -4,6 +4,8 @@ from checklib import *
 import re
 import base64
 
+from bs4 import BeautifulSoup
+
 PORT = 3000
 
 
@@ -45,10 +47,21 @@ class CheckMachine:
                 "qty": 1
             }
         )
+        
+        self.checker.check_response(r, 'Could not put flag')
 
-        pub_info = json.loads(base64.urlsafe_b64decode(r.cookies["cart"] + "==").decode())[0]["id"]
+        r = session.get(f'{self.url}/cart')
 
         self.checker.check_response(r, 'Could not put flag')
+
+        soup = BeautifulSoup(r.text, 'html.parser')
+        product_id_element = soup.find('div', attrs={'data-name': 'id'})
+
+        if not product_id_element:
+            self.checker.cquit(Status.MUMBLE, 'Could not put flag', 'No flag ID found in the cart page after having added a product.')
+
+        pub_info = product_id_element.text
+
         return pub_info, json.dumps({"email": email, "password": password})
     
     def put_flag_2(self, flag, vuln):
